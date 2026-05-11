@@ -28,6 +28,7 @@ const suggestions = [
 ]
 
 const SearchBar = () => {
+
   const [text, setText] = useState('')
   const [isFocused, setIsFocused] = useState(false)
 
@@ -59,25 +60,44 @@ const SearchBar = () => {
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        className="relative z-10 w-full max-w-5xl text-center"
+        className="relative z-10 w-full max-w-4xl text-center"
       >
 
+        {/* Logo */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="flex justify-center mb-5 mt-4"
+        >
+          <img
+            src="/pixora.png"
+            alt="Pixora Logo"
+            className="w-40 md:w-50 object-contain"
+          />
+        </motion.div>
+
         {/* Heading */}
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-black leading-tight text-gray-900">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight text-gray-900">
+
           Search Any
+
           <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">
             {' '}Image
           </span>,
+
           <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
             {' '}Video
           </span>
+
           {' '}& GIF
+
         </h1>
 
         {/* Subheading */}
-        <p className="mt-6 text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-5 text-base md:text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed">
           Explore millions of high-quality photos, videos, and trending GIFs
-          using powerful APIs with a fast and modern search experience.
+          with a fast and modern Pinterest-style experience.
         </p>
 
         {/* Search Box */}
@@ -88,7 +108,7 @@ const SearchBar = () => {
               ? '0 0 40px rgba(59,130,246,0.15)'
               : '0 10px 30px rgba(0,0,0,0.06)',
           }}
-          className="relative max-w-3xl mx-auto bg-white border border-gray-200 rounded-3xl p-3 flex items-center mt-12 shadow-xl"
+          className="relative max-w-3xl mx-auto bg-white border border-gray-200 rounded-3xl p-3 flex items-center mt-10 shadow-xl"
         >
 
           {/* Search Icon */}
@@ -133,10 +153,12 @@ const SearchBar = () => {
           >
             Search
           </motion.button>
+
         </motion.form>
 
         {/* Suggestions */}
         <div className="flex flex-wrap justify-center gap-3 mt-8 mb-7">
+
           {suggestions.map((item, index) => (
             <motion.button
               key={index}
@@ -148,6 +170,7 @@ const SearchBar = () => {
               {item}
             </motion.button>
           ))}
+
         </div>
 
       </motion.div>
